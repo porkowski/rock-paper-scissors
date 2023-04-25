@@ -1,66 +1,89 @@
 
 const choices = ["rock", "paper", "scissors"];
-let pChoice = prompt ("Please type either Rock, Paper, or Scissors.");
-let playerChoice = pChoice.toLowerCase();
-
-
-let computerChoice = function () {
-return cChoice = choices[Math.floor(Math.random()*choices.length)];
-
-}
-computerChoice();
+let player = 0;
+let computer = 0;
 
 
 function Round () {
-
+    let pChoice = prompt ("Please type either Rock, Paper, or Scissors.");
+    let playerChoice = pChoice.toLowerCase();
     
-    console.log(playerChoice);
-    console.log(cChoice);
+    
+    let computerChoice = function () {
+    return cChoice = choices[Math.floor(Math.random()*choices.length)];
+    }
+    computerChoice();
+    
+    console.log("playerChoice ="+ " "+ playerChoice);
+    console.log("cChoice ="+ " " +cChoice);
 
 switch(true) {
 
     case (playerChoice === "rock" && cChoice === "scissors") :
-    console.log("You win! Rock beats scissors!");
+    alert("You win! Rock beats scissors!");
+    return player++;
     break;    
     
     case (playerChoice === "rock"&& cChoice === "paper") :
-    console.log("You lose! Paper beats rock!");
+    alert("You lose! Paper beats rock!");
+    return computer++;
     break;
 
     case (playerChoice === "paper" && cChoice === "scissors") :
-    console.log("You lose! Scissors beats paper!");
+    alert("You lose! Scissors beats paper!");
+    return computer++;
     break;
 
     case (playerChoice === "paper" && cChoice === "rock") :
-    console.log("You win! Paper beats rock!");
+    alert("You win! Paper beats rock!");
+    return player++;
     break;
 
     case (playerChoice === "scissors" && cChoice === "rock") :
-    console.log("You lose! Rock beats scissors!");
+    alert("You lose! Rock beats scissors!");
+    return computer++;
     break;
 
     case (playerChoice === "scissors" && cChoice === "paper") :
-    console.log("You win! Scissors beats paper!");
+    alert("You win! Scissors beats paper!");
+    return player++;
     break;
 
     case (playerChoice === "rock" && cChoice === "paper") :
-    console.log("You lose! Paper beats rock!");
+    alert("You lose! Paper beats rock!");
+    return computer++;
     break;
 
     case (playerChoice === cChoice) :
-    console.log("It's a tie! Rematch if you please!");
+    alert("It's a tie, rematch!");
+    Round();
     break;
+
+    
 }
+
+
 }
 
-Round();
 
 
 
 
+function game() {
+    Round(); 
+    Round(); 
+    Round(); 
+    Round();  
+    Round(); 
 
+    if (player>computer) {
+        alert("Congrats, you win the game!"); 
+    } else if (computer<player) {
+        alert("Sorry, you lose the game!");
+    }
+}
 
-
+game()
 
 
 
