@@ -76,15 +76,16 @@ function game() {
     Round();  
     Round(); 
 
-    if (player>computer) {
-        alert("Congrats, you win the game!"); 
-    } else if (computer<player) {
-        alert("Sorry, you lose the game!");
-    }
+    
 }
 
 game()
 
+if (player>computer) {
+    alert("Congrats, you win the game!"); 
+} else if (computer<player) {
+    alert("Sorry, you lose the game!");
+}
 
 
 
