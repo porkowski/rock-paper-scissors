@@ -4,11 +4,8 @@ let player = 0;
 let computer = 0;
 
 
-function Round () {
-    let pChoice = prompt ("Please type either Rock, Paper, or Scissors.");
-    let playerChoice = pChoice.toLowerCase();
-    
-    
+function Round(playerChoice) {
+
     let computerChoice = function () {
     return cChoice = choices[Math.floor(Math.random()*choices.length)];
     }
@@ -55,67 +52,49 @@ switch(true) {
     break;
 
     case (playerChoice === cChoice) :
-    alert("It's a tie, rematch!");
-    Round();
+    alert("It's a tie, please rematch!");
     break;
 
     
 }
 
-
 }
 
+const para = document.getElementById("score");
+const cPara = document.getElementById("compScore");
+
+
+
+const buttons = document.querySelectorAll("button");
 
 
 
 
-function game() {
-    Round(); 
-    Round(); 
-    Round(); 
-    Round();  
-    Round(); 
-
+buttons.forEach(button => button.addEventListener("click", eGame));
     
+function eGame(e) {
+    playGame(e.target.id);
 }
 
-game()
-
-if (player>computer) {
-    alert("Congrats, you win the game!"); 
-} else if (computer<player) {
-    alert("Sorry, you lose the game!");
-}
-
+function playGame(playerChoice) {
+    Round(playerChoice);
+    para.textContent = `Your score is ${player}`;
+    cPara.textContent = `Computer score is ${computer}`;
+    endGame();
+};
 
 
 
-// BELOW IS MY ATTEMPT AT IF/ ELSE STATEMENTS INSIDE ROUND(), WHICH DID NOT WORK.
-/*
-if (playerChoice === "rock", cChoice === "scissors") {
-    console.log("You win! Rock beats scissors!");
-    
-}  else if (playerChoice === "rock", cChoice === "paper") {
-    console.log("You lose! Paper beats rock!");
-
-} else if (playerChoice === "paper", cChoice === "scissors") {
-    console.log("You lose! Scissors beats paper!");
-
-} else if (playerChoice === "paper", cChoice === "rock") {
-    console.log("You win! Paper beats rock!");
-
-} else if (playerChoice === "scissors", cChoice === "rock") {
-    console.log("You lose! Rock beats scissors!");
-
-} else if (playerChoice === "scissors",cChoice === "paper") {
-    console.log("You win! Scissors beats paper!");
-
-}  else if (playerChoice === "rock", cChoice === "paper") {
-    console.log("You lose! Paper beats rock!");
-
-} else if (playerChoice === cChoice) {
-    console.log("It's a tie! Rematch if you please!");
-}
-}
-*/
+function endGame() {
+    if (player >= 5) {
+        
+        alert("Congrats, you win the game!"); 
+        buttons.forEach(button => button.removeEventListener("click", eGame));
+    }
+     else if (computer >= 5) {
+        
+        alert("Sorry, you lose the game!");
+        buttons.forEach(button => button.removeEventListener("click", eGame));
+     
+    }};
 
